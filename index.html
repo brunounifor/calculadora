@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="./src/main.js" type="module"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <section class="display">
+            <section id="previousDigit" class="previousDigit">
+                0
+            </section>
+            <section id="currentDigit" class="currentDigit">
+                0
+            </section>
+        </section>
+        <section class="keyboard">
+            <table class="keyboard">
+                <tr>
+                    <td>
+                        <button id="clearCurrent" class="button">
+                            CE
+                        </button>
+                    </td>
+                    <td>
+                        <button id="clearAll" class="button">
+                            C
+                        </button>
+                    </td>
+                    <td>
+                        <button id="delete" class="button">
+                            &#9003; <!-- delete -->
+                        </button>
+                    </td>
+                    <td>
+                        <button id="divideSymbol" class="symbolButton">
+                            ÷
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="num7" class="numButton">
+                            7
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num8" class="numButton">
+                            8
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num9" class="numButton">
+                            9
+                        </button>
+                    </td>
+                    <td>
+                        <button id="multiplySymbol" class="symbolButton">
+                            x
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="num4" class="numButton">
+                            4
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num5" class="numButton">
+                            5
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num6" class="numButton">
+                            6
+                        </button>
+                    </td>
+                    <td>
+                        <button id="sumSymbol" class="symbolButton">
+                            +
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="num1" class="numButton">
+                            1
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num2" class="numButton">
+                            2
+                        </button>
+                    </td>
+                    <td>
+                        <button id="num3" class="numButton">
+                            3
+                        </button>
+                    </td>
+                    <td>
+                        <button id="subtractSymbol" class="symbolButton">
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button id="num0" class="numButton">
+                            0
+                        </button>
+                    </td>
+                    <td>
+                        <button id="dot" class="symbolButton">
+                            .
+                        </button>
+                    </td>
+                    <td>
+                        <button id="equals" class="symbolButton equalsButton">
+                            =
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

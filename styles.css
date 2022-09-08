@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+body {
+    background: whitesmoke;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    background-color: #e7e6e6;
+}
+
+.display {
+    font-weight: bold;
+    max-width: 100%;
+    width: 100%;
+    text-align: end;
+    font-size: 35px;
+    padding: 15px 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.displayDivideBy0 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.previousDigit {
+    font-size: 20px;
+    color: grey;
+}
+
+.keyboard {
+    background-color: rgb(209, 208, 208);
+}
+
+button {
+    border: none;
+    width: 80px;
+    height: 56px;
+    background-color: white;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+.numButton {
+    font-size: large;
+    font-weight: bold;
+}
+
+.symbolButton {
+    font-size: 20px;
+}
+
+.equalsButton {
+    background-color: #95bff5;
+}
+
+.equalsButton:hover {
+    background-color: #75a9ee;
+}
+
+#num0 {
+    width: 100%;
+}
+
+@media(max-width: 600px) {
+    button {
+      width: 4rem;
+    }
+}
+  
+@media(max-width: 300px) {
+    button {
+      width: 3rem;
+    }
+}
