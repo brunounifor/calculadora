@@ -1,4 +1,6 @@
 export function addition (a, b) {
-    let result = String(eval(`${a} + ${b}`))
+    let c = parseFloat(a)
+    let d = parseFloat(b)
+    let result = c + d
     return result;
 }
