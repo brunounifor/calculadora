@@ -1,21 +1,20 @@
-import {addition} from './addition.js';
-import {subtraction} from './subtraction.js';
-import {multiplication} from './multiplication.js';
-import {division} from './division.js';
+import Calculadora from "../service/calculuadoraService.js";
+
+const calculadora = new Calculadora();
 
 export function operationExecutor(operator, a, b) {
     switch(operator) {
         case '+':
-            return addition(a,b)
+            return calculadora.soma(a,b)
         case '-':
-            return subtraction(a, b);
+            return calculadora.subtracao(a, b);
         case '*':
-            return multiplication(a, b);
+            return calculadora.multiplicacao(a, b);
         case '/':
             if(b == '0') {
                 return 'It\'s not possible to divide by 0'
             } else {
-                return division(a, b);
+                return calculadora.divisao(a, b);
             }
     }
     return '';
