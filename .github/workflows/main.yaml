@@ -1,0 +1,51 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Run tests
+      run: npm test
+
+    - name: Enviar email se falhar pipeline
+      if: failure()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.MAIL_SERVER }}
+        server_port: ${{ secrets.MAIL_PORT }}
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: 'CI Pipeline Failure Notification'
+        to: ${{ secrets.MAIL_TO }}
+        from: ${{ secrets.MAIL_FROM }}
+        content_type: text/plain
+        body: |
+          A CI Pipeline falhou.
+          Job: ${{ github.job }}
+          Workflow: ${{ github.workflow }}
+          Repository: ${{ github.repository }}
+          Run ID: ${{ github.run_id }}
+          Run Number: ${{ github.run_number }}
+          Commit: ${{ github.sha }}
+          Error: ${{ steps.run_tests.outputs.error_message }}
