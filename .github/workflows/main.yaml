@@ -32,13 +32,13 @@ jobs:
 
     - name: Create log file
       run: |
-        echo "Job: ${{ github.job }}" >> execution_log.txt
+        echo "Job: ${{ github.job }}" > execution_log.txt
         echo "Workflow: ${{ github.workflow }}" >> execution_log.txt
         echo "Repository: ${{ github.repository }}" >> execution_log.txt
         echo "Run ID: ${{ github.run_id }}" >> execution_log.txt
         echo "Run Number: ${{ github.run_number }}" >> execution_log.txt
         echo "Commit: ${{ github.sha }}" >> execution_log.txt
-        if [ ${{ steps.run_tests.outcome }} == 'success' ]; then
+        if [ "${{ steps.run_tests.outcome }}" == "success" ]; then
           echo "Tests: Passed" >> execution_log.txt
         else
           echo "Tests: Failed" >> execution_log.txt
