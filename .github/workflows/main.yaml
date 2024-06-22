@@ -23,18 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install 2>&1 | tee -a pipeline_log.txt
-          npm install
+          npm install 
 
       - name: Run tests
         run: |
-          npm test 2>&1 | tee -a pipeline_log.txt
           npm test
 
       - name: Build project
         run: |
-          npm run build 2>&1 | tee -a pipeline_log.txt
-          npm run
+          npm run build 
 
   notify:
     needs: build
