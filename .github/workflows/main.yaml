@@ -50,6 +50,17 @@ jobs:
         name: execution_log
         path: $GITHUB_WORKSPACE/execution_log.txt
 
+    - name: Commit log file
+      if: always()
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add execution_log.txt
+        git commit -m "Add pipeline log [skip ci]"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   notify:
     needs: build
     runs-on: ubuntu-latest
