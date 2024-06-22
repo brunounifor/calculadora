@@ -29,24 +29,24 @@ jobs:
       run: npm test
 
   notify:
-  needs: build
-  runs-on: ubuntu-latest
-  if: failure()
+    needs: build
+    runs-on: ubuntu-latest
+    if: failure()
 
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Send email notification
-      env:
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-      run: node ./src/pipeline-utils/send-email.js
+      - name: Send email notification
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        run: node ./src/pipeline-utils/send-email.js
