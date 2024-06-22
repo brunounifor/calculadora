@@ -1,4 +1,4 @@
-import Calculadora from "../service/calculuadoraService.js";
+import Calculadora from "../service/calculadoraService.js";
 
 const calculadora = new Calculadora();
 
