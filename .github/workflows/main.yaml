@@ -2,64 +2,33 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install 2>&1 | tee -a pipeline_log.txt
 
-    - name: Build project
-      run: npm run build
+      - name: Run tests
+        run: npm test 2>&1 | tee -a pipeline_log.txt
 
-    - name: Run tests
-      id: run_tests
-      run: npm test
-      continue-on-error: true
-
-    - name: Create log file
-      run: |
-        echo "Job: ${{ github.job }}" > $GITHUB_WORKSPACE/execution_log.txt
-        echo "Workflow: ${{ github.workflow }}" >> $GITHUB_WORKSPACE/execution_log.txt
-        echo "Repository: ${{ github.repository }}" >> $GITHUB_WORKSPACE/execution_log.txt
-        echo "Run ID: ${{ github.run_id }}" >> $GITHUB_WORKSPACE/execution_log.txt
-        echo "Run Number: ${{ github.run_number }}" >> $GITHUB_WORKSPACE/execution_log.txt
-        echo "Commit: ${{ github.sha }}" >> $GITHUB_WORKSPACE/execution_log.txt
-        if [ "${{ steps.run_tests.outcome }}" == "success" ]; then
-          echo "Tests: Passed" >> $GITHUB_WORKSPACE/execution_log.txt
-        else
-          echo "Tests: Failed" >> $GITHUB_WORKSPACE/execution_log.txt
-        fi
-
-    - name: Upload log file
-      uses: actions/upload-artifact@v2
-      with:
-        name: execution_log
-        path: $GITHUB_WORKSPACE/execution_log.txt
-
-    - name: Commit log file
-      if: always()
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add execution_log.txt
-        git commit -m "Add pipeline log [skip ci]"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build project
+        run: npm run build 2>&1 | tee -a pipeline_log.txt
 
   notify:
     needs: build
@@ -77,12 +46,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Download log file
-        uses: actions/download-artifact@v2
-        with:
-          name: execution_log
-          path: $GITHUB_WORKSPACE
 
       - name: Send email notification
         env:
