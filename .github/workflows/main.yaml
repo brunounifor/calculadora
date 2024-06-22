@@ -22,13 +22,19 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install 2>&1 | tee -a pipeline_log.txt
+        run: |
+          npm install
+          npm install 2>&1 | tee -a pipeline_log.txt
 
       - name: Run tests
-        run: npm test 
+        run: |
+          npm test
+          npm test 2>&1 | tee -a pipeline_log.txt
 
       - name: Build project
-        run: npm run build 2>&1 | tee -a pipeline_log.txt
+        run: |
+          npm run
+          npm run build 2>&1 | tee -a pipeline_log.txt
 
   notify:
     needs: build
