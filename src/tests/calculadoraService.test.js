@@ -11,13 +11,18 @@ describe('Testes da Calculadora', () => {
     expect(calculadora.subtracao(5, 3)).toBe(2);
   });
 
-  it('Deve somar 2 x 6 e dar igual a 12', async () => {
+  it('Deve multiplicar 2 x 6 e dar igual a 12', async () => {
     const calculadora = new Calculadora();
     expect(calculadora.multiplicacao(2, 6)).toBe(12);
   });
 
-  it('Deve somar 6 / 2 e dar igual a 3', async () => {
+  it('Deve dividir 6 / 2 e dar igual a 3', async () => {
     const calculadora = new Calculadora();
     expect(calculadora.divisao(6, 2)).toBe(3);
+  });
+
+   it('Deve somar 2 + 4 e dar igual a 6', async () => {
+    const calculadora = new Calculadora();
+    expect(calculadora.soma(2, 4)).toBe(6);
   });
 });
