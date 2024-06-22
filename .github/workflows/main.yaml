@@ -32,23 +32,23 @@ jobs:
 
     - name: Create log file
       run: |
-        echo "Job: ${{ github.job }}" > execution_log.txt
-        echo "Workflow: ${{ github.workflow }}" >> execution_log.txt
-        echo "Repository: ${{ github.repository }}" >> execution_log.txt
-        echo "Run ID: ${{ github.run_id }}" >> execution_log.txt
-        echo "Run Number: ${{ github.run_number }}" >> execution_log.txt
-        echo "Commit: ${{ github.sha }}" >> execution_log.txt
+        echo "Job: ${{ github.job }}" > $GITHUB_WORKSPACE/execution_log.txt
+        echo "Workflow: ${{ github.workflow }}" >> $GITHUB_WORKSPACE/execution_log.txt
+        echo "Repository: ${{ github.repository }}" >> $GITHUB_WORKSPACE/execution_log.txt
+        echo "Run ID: ${{ github.run_id }}" >> $GITHUB_WORKSPACE/execution_log.txt
+        echo "Run Number: ${{ github.run_number }}" >> $GITHUB_WORKSPACE/execution_log.txt
+        echo "Commit: ${{ github.sha }}" >> $GITHUB_WORKSPACE/execution_log.txt
         if [ "${{ steps.run_tests.outcome }}" == "success" ]; then
-          echo "Tests: Passed" >> execution_log.txt
+          echo "Tests: Passed" >> $GITHUB_WORKSPACE/execution_log.txt
         else
-          echo "Tests: Failed" >> execution_log.txt
+          echo "Tests: Failed" >> $GITHUB_WORKSPACE/execution_log.txt
         fi
 
     - name: Upload log file
       uses: actions/upload-artifact@v2
       with:
         name: execution_log
-        path: execution_log.txt
+        path: $GITHUB_WORKSPACE/execution_log.txt
 
   notify:
     needs: build
@@ -71,7 +71,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: execution_log
-          path: ./logs
+          path: $GITHUB_WORKSPACE
 
       - name: Send email notification
         env:
