@@ -12,7 +12,7 @@ let transporter = nodemailer.createTransport({
 // Configure as opções de e-mail
 let mailOptions = {
   from: process.env.EMAIL_USER,
-  to: 'brunonnalves@edu.unifor.br, sconstantino@edu.unifor.br', // Lista de e-mails separados por vírgula
+  to: 'brunonnalves@edu.unifor.br, sconstantino@edu.unifor.br, jorgegiraolv@gmail.com', // Lista de e-mails separados por vírgula
   subject: 'Pipeline Failed',
   text: 'A pipeline falhou. Por favor, verifique o logs no GitHub Actions para mais detalhes.',
 };
