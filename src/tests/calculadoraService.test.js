@@ -13,7 +13,7 @@ describe('Testes da Calculadora', () => {
 
   it('Deve multiplicar 2 x 6 e dar igual a 12', async () => {
     const calculadora = new Calculadora();
-    expect(calculadora.multiplicacao(2, 6)).toBe(12);
+    expect(calculadora.multiplicacao(2, 6)).toBe(10);
   });
 
   it('Deve dividir 6 / 2 e dar igual a 3', async () => {
