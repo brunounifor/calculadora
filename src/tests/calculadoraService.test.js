@@ -1,28 +1,59 @@
 import Calculadora from "../service/calculadoraService.js";
 
 describe('Testes da Calculadora', () => {
-  it('Deve somar 1 + 2 e dar igual a 3', async () => {
+  it('Deve somar dois números naturais quando utilizar o método soma', async () => {
+    // Arrange
     const calculadora = new Calculadora();
-    expect(calculadora.soma(1, 2)).toBe(3);
+    const numero1 = 1;
+    const numero2 = 2;
+    const mockResult = numero1 + numero2;
+
+    // Act
+    const methodResult = calculadora.soma(numero1, numero2);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
   });
 
-  it('Deve subtrair 5 - 3 e dar igual a 2', async () => {
+  it('Deve subtrair dois números naturais quando utilizar o método subtracao', async () => {
+    // Arrange
     const calculadora = new Calculadora();
-    expect(calculadora.subtracao(5, 3)).toBe(2);
+    const numero1 = 5;
+    const numero2 = 3;
+    const mockResult = numero1 - numero2;
+
+    // Act
+    const methodResult = calculadora.subtracao(numero1, numero2);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
   });
 
-  it('Deve multiplicar 2 x 6 e dar igual a 12', async () => {
+  it('Deve multiplicar dois números naturais quando utilizar o método multiplicacao', async () => {
+    // Arrange
     const calculadora = new Calculadora();
-    expect(calculadora.multiplicacao(2, 6)).toBe(12);
+    const numero1 = 2;
+    const numero2 = 6;
+    const mockResult = numero1 * numero2;
+  
+    // Act
+    const methodResult = calculadora.multiplicacao(numero1, numero2);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
   });
 
-  it('Deve dividir 6 / 2 e dar igual a 3', async () => {
+  it('Deve dividir dois números naturais com denominador não nulo quando utilizar o método divisao', async () => {
+    // Arrange
     const calculadora = new Calculadora();
-    expect(calculadora.divisao(6, 2)).toBe(3);
-  });
+    const numero1 = 2;
+    const numero2 = 6;
+    const mockResult = numero1 / numero2;
+  
+    // Act
+    const methodResult = calculadora.divisao(numero1, numero2);
 
-   it('Deve somar 2 + 4 e dar igual a 6', async () => {
-    const calculadora = new Calculadora();
-    expect(calculadora.soma(2, 4)).toBe(6);
+    // Assert
+    expect(methodResult).toBe(mockResult);
   });
 });
