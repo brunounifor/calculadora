@@ -56,4 +56,50 @@ describe('Testes da Calculadora', () => {
     // Assert
     expect(methodResult).toBe(mockResult);
   });
+
+  it('Deve elevar o primeiro número na potência do segundo número quando utilizar o método potencia', async () => {
+    // Arrange
+    const calculadora = new Calculadora();
+    const numero1 = 2;
+    const numero2 = 6;
+    const mockResult = numero1 ** numero2;
+  
+    // Act
+    const methodResult = calculadora.potencia(numero1, numero2);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
+  });
+
+  it('Deve calcular a raíz quadrada do número natural quando utilizar o método raiz', async () => {
+    // Arrange
+    const calculadora = new Calculadora();
+    const numero1 = 2;
+    const mockResult = numero1 ** 0.5;
+  
+    // Act
+    const methodResult = calculadora.raiz(numero1);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
+  });
+
+  it('Deve calcular o fatorial do número natural quando utilizar o método fatorial', async () => {
+    // Arrange
+    const calculadora = new Calculadora();
+    const numero1 = 5;
+    let mockResult = 1;
+
+    if(numero1 !== 0) {
+      for (let index = numero1; index >= 1; index--) {
+        mockResult = mockResult * index
+      }
+    }
+  
+    // Act
+    const methodResult = calculadora.fatorial(numero1);
+
+    // Assert
+    expect(methodResult).toBe(mockResult);
+  });
 });
