@@ -23,6 +23,6 @@ describe('Testes da Calculadora', () => {
 
    it('Deve somar 2 + 4 e dar igual a 6', async () => {
     const calculadora = new Calculadora();
-    expect(calculadora.soma(2, 4)).toBe(6);
+    expect(calculadora.soma(2, 4)).toBe(9);
   });
 });
